@@ -50,7 +50,7 @@ FROM actor
 GROUP BY last_name;
 
 -- 4b last names shared by more that 2 actors
-SELECT last_name, COUNT(*) 
+SELECT  first_name, last_name, COUNT(last_name) 
 FROM actor
 GROUP BY last_name
 HAVING COUNT(last_name) > 1;
@@ -95,7 +95,7 @@ CREATE TABLE `address` (
 -- 6a display first and last names and address of staff members
 SELECT first_name, last_name, address
 FROM staff s
-JOIN payment p
+JOIN address a
 ON s.address_id = a.address_id;
 
 -- 6b total amount rung up in Aug 2005
@@ -232,4 +232,4 @@ LIMIT 5;
 SELECT * FROM top_five_genres;
 
 -- 8c You find that you no longer need the view top_five_genres. Write a query to delete it
-DROP VIEW total_sales;
+DROP VIEW top_five_genres;
